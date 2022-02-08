@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mxcWqGW9YHGJCAw19m7Cmf7xJh3bNfU+qrtM2xbv5qchyWGxPWtd3E5JTgAlbtmi8S5jINTxq4nHejkEqmgv3g==",
+  "dgSpecHash": "hpdPxeskUcGNrC89SVZqXZ/N3DsiibiaOeeqY9+QneWTeGbJPUSjtV89BKm/Z162XNuKshRk+/5kQ+44rZho7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro\\Desktop\\estudoAPI\\CRUDBasico\\API\\API.csproj",
+  "projectFilePath": "c:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\CRUDBasico\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\6.0.1\\microsoft.aspnetcore.diagnostics.entityframeworkcore.6.0.1.nupkg.sha512",

@@ -5841,11 +5841,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pedro\\Desktop\\estudoAPI\\CRUDBasico\\API\\API.csproj",
+      "projectUniqueName": "c:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\CRUDBasico\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\pedro\\Desktop\\estudoAPI\\CRUDBasico\\API\\API.csproj",
+      "projectPath": "c:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\CRUDBasico\\API\\API.csproj",
       "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pedro\\Desktop\\estudoAPI\\CRUDBasico\\API\\obj\\",
+      "outputPath": "c:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\CRUDBasico\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
