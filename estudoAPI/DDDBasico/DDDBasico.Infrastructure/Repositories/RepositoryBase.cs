@@ -42,7 +42,15 @@ namespace DDDBasico.Infrastructure.Repositories
 
         public TEntity GetById(int id)
         {
-            throw new NotImplementedException();
+             try
+            {
+                return _context.Set<TEntity>().Find(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void Remove(TEntity obj)

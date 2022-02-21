@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj": {}
+    "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj": {
+    "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
+        "projectUniqueName": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
         "projectName": "DDDBasico.Application",
-        "projectPath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
-        "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Application\\obj\\",
+        "projectPath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
+        "packagesPath": "C:\\Users\\rbmwe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rbmwe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj": {
-                "projectPath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj"
+              "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj": {
+                "projectPath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj"
               }
             }
           }
@@ -72,17 +72,17 @@
         }
       }
     },
-    "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj": {
+    "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj",
         "projectName": "DDDBasico.Domain",
-        "projectPath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj",
-        "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\obj\\",
+        "projectPath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj",
+        "packagesPath": "C:\\Users\\rbmwe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rbmwe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

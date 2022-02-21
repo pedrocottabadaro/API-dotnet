@@ -25,7 +25,9 @@ namespace DDDBasico.Application.Users.Command
 
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            return null;
+      /*      var user = _repository.GetById(request.Id);
+            Console.WriteLine(user);*/
+            return await Task.FromResult("Sucesso");
         }
     }
 }

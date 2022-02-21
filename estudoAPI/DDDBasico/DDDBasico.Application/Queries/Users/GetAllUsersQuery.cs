@@ -8,23 +8,24 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Queries.Users
 {
-    public record GetUserQuery(int Id) : IRequest<string>;
+    public record GetAllUsersQuery() : IRequest<string>;
 
-    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, string>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, string>
     {
 
         private readonly IRepositoryUser _repository;
 
-        public GetUserQueryHandler(IRepositoryUser repository)
+        public GetAllUsersQueryHandler(IRepositoryUser repository)
         {
             _repository = repository;
         }
 
-        public Task<string> Handle(GetUserQuery request, CancellationToken cancellationToken)
+        public Task<string> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            var user = _repository.GetById(request.Id);
-            Console.WriteLine(user);
+            var users = _repository.GetAll();
+            Console.WriteLine(users);
             return Task.FromResult("Sucesso");
+
 
         }
     }

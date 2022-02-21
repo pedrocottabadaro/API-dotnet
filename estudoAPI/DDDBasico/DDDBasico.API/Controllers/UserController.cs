@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDDBasico.Application.Queries.Users;
 using DDDBasico.Application.Users.Command;
 using DDDBasico.Domain.Interfaces;
 using DDDBasico.Infrastructure.Repositories;
@@ -26,11 +27,17 @@ namespace DDDBasico.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetUsers()
+        public async Task<IActionResult> GetAll(GetAllUsersQuery query)
         {
+            var response = await _mediator.Send(query);
+            return Ok(response);
+        }
 
-            return Ok(_repository.GetAll());
-
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(GetUserQuery query)
+        {
+            var response = await _mediator.Send(query);
+            return Ok(response);
         }
 
 
