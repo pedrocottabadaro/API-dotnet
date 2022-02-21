@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using DDDBasico.Application.Users.Command;
+using DDDBasico.Domain.Interfaces;
+using DDDBasico.Infrastructure.Repositories;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace DDDBasico.API.Controllers
+{
+    [ApiController]
+    [Route("api/users/[controller]")]
+    public class UserController : ControllerBase
+    {
+
+        private readonly IRepositoryUser _repository;
+        private readonly IMediator _mediator;
+
+
+        public UserController(IRepositoryUser repository, IMediator mediator)
+        {
+            _repository = repository;
+            _mediator = mediator;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> GetUsers()
+        {
+
+            return Ok(_repository.GetAll());
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateUserCommand command)
+        {
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
+
+
+
+
+    }
+}

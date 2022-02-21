@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DDDBasico.Infrastructure"
+    "\\DDDBasico.Application",
+    "\\DDDBasico.Application\\Users\\Command",
+    "\\DDDBasico.Application\\Users\\Queries"
   ],
-  "SelectedNode": "\\DDDBasico.Infrastructure\\DependencyInjection.cs",
+  "SelectedNode": "\\DDDBasico.sln",
   "PreviewInSolutionExplorer": false
 }

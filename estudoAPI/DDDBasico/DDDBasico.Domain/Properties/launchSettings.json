@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "DDDBasico.Domain": {
+      "commandName": "Project"
+    }
+  }
+}

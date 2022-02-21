@@ -6,7 +6,6 @@ C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\obj
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\bin\Debug\net6.0\DDDBasico.Infrastructure.deps.json
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\bin\Debug\net6.0\DDDBasico.Infrastructure.runtimeconfig.json
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\bin\Debug\net6.0\DDDBasico.Infrastructure.dll
-C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\bin\Debug\net6.0\ref\DDDBasico.Infrastructure.dll
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\bin\Debug\net6.0\DDDBasico.Infrastructure.pdb
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\bin\Debug\net6.0\DDDBasico.Domain.dll
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\bin\Debug\net6.0\DDDBasico.Domain.pdb
@@ -15,3 +14,4 @@ C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\obj
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\obj\Debug\net6.0\ref\DDDBasico.Infrastructure.dll
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\obj\Debug\net6.0\DDDBasico.Infrastructure.pdb
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\obj\Debug\net6.0\DDDBasico.Infrastructure.genruntimeconfig.cache
+C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Infrastructure\obj\Debug\net6.0\refint\DDDBasico.Infrastructure.dll

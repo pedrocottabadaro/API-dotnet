@@ -1,4 +1,5 @@
-namespace DDDBasico.API;
+using System;
+
 
 public class WeatherForecast
 {

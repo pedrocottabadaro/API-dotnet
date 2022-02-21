@@ -1,4 +1,7 @@
-﻿using DDDBasico.Infrastructure.Context;
+﻿using DDDBasico.Domain.Interfaces;
+using DDDBasico.Infrastructure.Context;
+using DDDBasico.Infrastructure.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +14,8 @@ public static class DepencyInjection
     {
 
         ConfigureDB(services, config);
+        services.AddTransient<IRepositoryUser, RepositoryUser>();
+        services.AddMediatR(AppDomain.CurrentDomain.Load("DDDBasico.Application"));
 
     }
 

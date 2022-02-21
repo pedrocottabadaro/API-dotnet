@@ -1,6 +1,5 @@
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\bin\Debug\net6.0\DDDBasico.Domain.deps.json
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\bin\Debug\net6.0\DDDBasico.Domain.dll
-C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\bin\Debug\net6.0\ref\DDDBasico.Domain.dll
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\bin\Debug\net6.0\DDDBasico.Domain.pdb
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\obj\Debug\net6.0\DDDBasico.Domain.csproj.AssemblyReference.cache
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\obj\Debug\net6.0\DDDBasico.Domain.GeneratedMSBuildEditorConfig.editorconfig
@@ -10,3 +9,4 @@ C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\obj\Debug\n
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\obj\Debug\net6.0\DDDBasico.Domain.dll
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\obj\Debug\net6.0\ref\DDDBasico.Domain.dll
 C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\obj\Debug\net6.0\DDDBasico.Domain.pdb
+C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.Domain\obj\Debug\net6.0\refint\DDDBasico.Domain.dll
