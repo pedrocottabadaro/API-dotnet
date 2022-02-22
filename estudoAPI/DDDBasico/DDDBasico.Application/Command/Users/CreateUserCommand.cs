@@ -1,33 +1,52 @@
-﻿using DDDBasico.Domain.Interfaces;
+﻿using DDDBasico.Domain.Entities;
+using DDDBasico.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Users.Command
 {
-    public record CreateUserCommand (String Username,byte[]Password,String email) : IRequest<string>;
+    public record CreateUserCommand (String UserName, String Password,String email) : IRequest<string>;
 
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, String>
     {
 
         private readonly IRepositoryUser _repository;
-        private readonly IMediator _mediator;
 
 
-        public CreateUserCommandHandler(IMediator mediator,IRepositoryUser repository)
+        public CreateUserCommandHandler(IRepositoryUser repository)
         {
-            _mediator = mediator;
             _repository = repository;
         }
 
-        public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<String> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-      /*      var user = _repository.GetById(request.Id);
-            Console.WriteLine(user);*/
-            return await Task.FromResult("Sucesso");
+            try
+            {
+                if (_repository.checkUserExists(request.UserName)) return await Task.FromResult("Username is Taken");
+                using var hmac = new HMACSHA512();
+                var user = new User
+                {
+                    UserName = request.UserName.ToLower(),
+                    email = request.email,
+                    PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
+                    PasswordSalt = hmac.Key
+                };
+
+                _repository.Add(user);
+
+                return await Task.FromResult("User created");
+
+            }
+            catch (System.Exception)
+            {
+                return await Task.FromResult("Erro");
+            }
+
         }
     }
 }

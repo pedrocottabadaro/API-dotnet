@@ -8,6 +8,7 @@ namespace DDDBasico.Domain.Interfaces
 {
     public interface IRepositoryUser : IRepositoryBase<User>
     {
-        
+        bool checkUserExists(string username);
+
     }
 }

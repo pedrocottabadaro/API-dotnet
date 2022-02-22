@@ -19,46 +19,37 @@ namespace DDDBasico.Infrastructure.Repositories
         public void Add(TEntity obj)
         {
 
-            throw new NotImplementedException();
-        }
+            _context.Set<TEntity>().Add(obj);
+            _context.SaveChangesAsync();
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetAll()
-        {
-            try
-            {
-                return _context.Set<TEntity>().ToList();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public TEntity GetById(int id)
-        {
-             try
-            {
-                return _context.Set<TEntity>().Find(id);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
         }
 
         public void Remove(TEntity obj)
         {
-            throw new NotImplementedException();
+            _context.Set<TEntity>().Remove(obj);
+            _context.SaveChangesAsync();
         }
 
         public void Update(TEntity obj)
+        {
+
+            _context.Set<TEntity>().Update(obj);
+            _context.SaveChangesAsync();
+        }
+    
+        public IEnumerable<TEntity> GetAll()
+        {
+           return _context.Set<TEntity>().ToList();
+           
+        }
+
+        public TEntity GetById(int id)
+        {       
+           return _context.Set<TEntity>().Find(id);       
+          
+        }
+
+        public void Dispose()
         {
             throw new NotImplementedException();
         }

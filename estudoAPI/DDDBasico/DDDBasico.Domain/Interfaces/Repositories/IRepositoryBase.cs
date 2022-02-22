@@ -11,7 +11,7 @@ namespace DDDBasico.Domain.Interfaces
 
         TEntity GetById(int id);
 
-        List<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll();
 
         void Update(TEntity obj);
 

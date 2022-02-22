@@ -5,24 +5,21 @@ using System.Threading.Tasks;
 using DDDBasico.Application.Queries.Users;
 using DDDBasico.Application.Users.Command;
 using DDDBasico.Domain.Interfaces;
-using DDDBasico.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DDDBasico.API.Controllers
 {
     [ApiController]
-    [Route("api/users/[controller]")]
+    [Route("api/users/")]
     public class UserController : ControllerBase
     {
 
-        private readonly IRepositoryUser _repository;
         private readonly IMediator _mediator;
 
 
         public UserController(IRepositoryUser repository, IMediator mediator)
         {
-            _repository = repository;
             _mediator = mediator;
         }
 
@@ -40,7 +37,6 @@ namespace DDDBasico.API.Controllers
             return Ok(response);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Post(CreateUserCommand command)
         {
@@ -48,7 +44,12 @@ namespace DDDBasico.API.Controllers
             return Ok(response);
         }
 
-
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(UpdateUserCommand command)
+        {
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
 
 
     }
