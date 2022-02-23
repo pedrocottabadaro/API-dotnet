@@ -25,8 +25,10 @@ namespace DDDBasico.Application.Queries.Users
         public async Task<UserDTO> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {
             var user = _repository.GetById(request.Id);
+            var result = new UserDTO();
+            if (user == null) return await Task.FromResult(result);
 
-            var result = new UserDTO {
+            result = new UserDTO {
                 Id = user.Id,
                 UserName= user.UserName,
                 email= user.email,

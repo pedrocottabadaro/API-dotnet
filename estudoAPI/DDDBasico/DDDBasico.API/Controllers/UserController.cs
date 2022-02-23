@@ -35,14 +35,18 @@ namespace DDDBasico.API.Controllers
         {
             var request = query with { Id = id };
             var response = await _mediator.Send(request);
-            return Ok(response);
+            if (response !=null) return Ok(response);
+            return BadRequest(response);
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(CreateUserCommand command)
         {
             var response = await _mediator.Send(command);
-            return Ok(response);
+            if (response == "User updated") return Ok(response);
+            if (response == "Username is Taken") return BadRequest(response);
+            return StatusCode(500, response);
+
         }
 
         [HttpPut("{id}")]
@@ -50,7 +54,9 @@ namespace DDDBasico.API.Controllers
         {
             var request = command with { Id = id};
             var response = await _mediator.Send(request);
-            return Ok(response);
+            if (response == "User updated") return Ok(response);
+            if (response == "User not found") return NotFound(response);
+            return StatusCode(500,response);
         }
 
         [HttpDelete("{id}")]
@@ -58,7 +64,9 @@ namespace DDDBasico.API.Controllers
         {
             var request = command with { Id = id };
             var response = await _mediator.Send(request);
-            return Ok(response);
+            if (response == "User deleted") return Ok(response);
+            if (response == "User not found") return NotFound(response);
+            return StatusCode(500, response);
         }
 
      
@@ -68,7 +76,7 @@ namespace DDDBasico.API.Controllers
             var request = command with { Id = id };
             var response = await _mediator.Send(request);
             if(response!=null) return Ok(response);
-            return BadRequest();
+            return BadRequest("Something went wrong");
 
         }
 

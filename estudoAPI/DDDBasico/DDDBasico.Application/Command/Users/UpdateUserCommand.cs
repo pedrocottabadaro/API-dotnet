@@ -28,7 +28,7 @@ namespace DDDBasico.Application.Users.Command
             try
             {
                 var user = _repository.GetById(request.Id);
-                if(user==null) return await Task.FromResult("User updated");
+                if(user==null) return await Task.FromResult("User not found");
 
                 user.email = request.email;
 
@@ -39,7 +39,7 @@ namespace DDDBasico.Application.Users.Command
             }
             catch (System.Exception)
             {
-                return await Task.FromResult("Erro");
+                return await Task.FromResult("Internal error");
             }
 
         }

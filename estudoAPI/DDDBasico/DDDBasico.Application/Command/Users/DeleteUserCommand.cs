@@ -36,7 +36,7 @@ namespace DDDBasico.Application.Users.Command
             }
             catch (System.Exception)
             {
-                return await Task.FromResult("Erro");
+                return await Task.FromResult("Internal error");
             }
 
         }
