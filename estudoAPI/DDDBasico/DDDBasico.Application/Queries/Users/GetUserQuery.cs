@@ -1,4 +1,5 @@
-﻿using DDDBasico.Domain.Entities;
+﻿using DDDBasico.Application.DTO;
+using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
 using MediatR;
 using System;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Queries.Users
 {
-    public record GetUserQuery(int Id) : IRequest<User>;
+    public record GetUserQuery(int Id) : IRequest<UserDTO>;
 
-    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, User>
+    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserDTO>
     {
 
         private readonly IRepositoryUser _repository;
@@ -21,9 +22,16 @@ namespace DDDBasico.Application.Queries.Users
             _repository = repository;
         }
 
-        public async Task<User> Handle(GetUserQuery request, CancellationToken cancellationToken)
+        public async Task<UserDTO> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {
-            var result = _repository.GetById(1);
+            var user = _repository.GetById(request.Id);
+
+            var result = new UserDTO {
+                Id = user.Id,
+                UserName= user.UserName,
+                email= user.email,
+                drink_counter= user.drink_counter
+            };
             return await Task.FromResult(result);
         }
     }

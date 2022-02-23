@@ -31,9 +31,10 @@ namespace DDDBasico.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(GetUserQuery query)
+        public async Task<IActionResult> Get(int id, GetUserQuery query)
         {
-            var response = await _mediator.Send(query);
+            var request = query with { Id = id };
+            var response = await _mediator.Send(request);
             return Ok(response);
         }
 
@@ -45,10 +46,30 @@ namespace DDDBasico.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(UpdateUserCommand command)
+        public async Task<IActionResult> Put(int id, UpdateUserCommand command)
         {
-            var response = await _mediator.Send(command);
+            var request = command with { Id = id};
+            var response = await _mediator.Send(request);
             return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id, DeleteUserCommand command)
+        {
+            var request = command with { Id = id };
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+     
+        [HttpPost("{id:int}/drink")]
+        public async Task<IActionResult> Drink(int id,DrinkUserCommand command)
+        {
+            var request = command with { Id = id };
+            var response = await _mediator.Send(request);
+            if(response!=null) return Ok(response);
+            return BadRequest();
+
         }
 
 

@@ -2,11 +2,12 @@
 using DDDBasico.Infrastructure.Context;
 using DDDBasico.Infrastructure.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
-
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 public static class DepencyInjection
 {
@@ -14,6 +15,7 @@ public static class DepencyInjection
     {
 
         ConfigureDB(services, config);
+        ConfigureToken(services, config);
         services.AddTransient<IRepositoryUser, RepositoryUser>();
         services.AddMediatR(AppDomain.CurrentDomain.Load("DDDBasico.Application"));
 
@@ -24,6 +26,22 @@ public static class DepencyInjection
 
         services.AddDbContext<ApplicationDbContext>(options =>{options.UseSqlite(config.GetConnectionString("DefaultConnection"));});
 
+    }
+
+
+    public static void ConfigureToken(this IServiceCollection services, IConfiguration config)
+    {
+
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+            };
+        });
     }
 
 }

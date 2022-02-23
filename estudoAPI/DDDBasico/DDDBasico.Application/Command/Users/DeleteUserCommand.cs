@@ -10,31 +10,28 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Users.Command
 {
-    public record UpdateUserCommand (int Id,String UserName, String Password,String email) : IRequest<string>;
+    public record DeleteUserCommand (int Id) : IRequest<string>;
 
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, String>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, String>
     {
 
         private readonly IRepositoryUser _repository;
 
 
-        public UpdateUserCommandHandler(IRepositoryUser repository)
+        public DeleteUserCommandHandler(IRepositoryUser repository)
         {
             _repository = repository;
         }
 
-        public async Task<String> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<String> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             try
             {
                 var user = _repository.GetById(request.Id);
-                if(user==null) return await Task.FromResult("User updated");
+                if(user == null) return await Task.FromResult("User not found");
+                _repository.Remove(user);
 
-                user.email = request.email;
-
-                _repository.Update(user);
-
-                return await Task.FromResult("User updated");
+                return await Task.FromResult("User deleted");
 
             }
             catch (System.Exception)
