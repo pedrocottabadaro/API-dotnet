@@ -11,17 +11,20 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Users.Command
 {
-    public record DrinkUserCommand (int Id,int drink_ml) : IRequest<UserDTO>;
+    public record DrinkUserCommand(int Id, int drink_ml) : IRequest<UserDTO>;
 
     public class DrinkUserCommandHandler : IRequestHandler<DrinkUserCommand, UserDTO>
     {
 
         private readonly IRepositoryUser _repository;
+        private readonly IRepositoryLog _log;
 
 
-        public DrinkUserCommandHandler(IRepositoryUser repository)
+
+        public DrinkUserCommandHandler(IRepositoryUser repository, IRepositoryLog log)
         {
             _repository = repository;
+            _log = log;
         }
 
         public async Task<UserDTO> Handle(DrinkUserCommand request, CancellationToken cancellationToken)
@@ -31,9 +34,17 @@ namespace DDDBasico.Application.Users.Command
                 var user = _repository.GetById(request.Id);
                 if (user == null) return null;
 
-                user.drink_counter +=0+request.drink_ml;
-
+                user.drink_counter += 0 + request.drink_ml;
+                var currentDateTime=DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                var dateLog = DateTime.Parse(currentDateTime);
+                var userLog = new Log {
+                    Data = dateLog,
+                    drink_amount = request.drink_ml,
+                    Iduser = user.Id
+                };
                 _repository.Update(user);
+                _log.Add(userLog);
+
 
                 var result = new UserDTO
                 {

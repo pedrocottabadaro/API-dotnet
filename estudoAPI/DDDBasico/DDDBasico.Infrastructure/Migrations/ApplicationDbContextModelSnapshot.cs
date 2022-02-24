@@ -17,6 +17,26 @@ namespace DDDBasico.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
 
+            modelBuilder.Entity("DDDBasico.Domain.Entities.Log", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Iduser")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("drink_amount")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Log");
+                });
+
             modelBuilder.Entity("DDDBasico.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -29,7 +49,7 @@ namespace DDDBasico.Infrastructure.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("BLOB");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("UserName")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("drink_counter")

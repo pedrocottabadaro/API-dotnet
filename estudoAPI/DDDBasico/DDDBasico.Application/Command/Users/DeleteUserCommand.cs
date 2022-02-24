@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Users.Command
 {
-    public record DeleteUserCommand (int Id) : IRequest<string>;
+    public record DeleteUserCommand(int Id) : IRequest<string>;
 
     public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, String>
     {
@@ -28,7 +28,7 @@ namespace DDDBasico.Application.Users.Command
             try
             {
                 var user = _repository.GetById(request.Id);
-                if(user == null) return await Task.FromResult("User not found");
+                if (user == null) return await Task.FromResult("User not found");
                 _repository.Remove(user);
 
                 return await Task.FromResult("User deleted");

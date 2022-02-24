@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "vshNEgWv8e7awgjjoj+vvjVgRBSJk/W1AcJHbr45AV3br7cTvbEjvxoik6k981gM+/29ZRL75rBq3u4BWDM2Ew==",
+  "dgSpecHash": "QTEDBr7McOd/DYOTctY1+XBb3ijR444Lssx07Ff3d7A9U+Yj9L9t7M6Z4+2Xv0MsAJAXbTERv7dHxVvrJ+6jVw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\rbmwe\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
-    "C:\\Users\\rbmwe\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
-    "C:\\Users\\rbmwe\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
-    "C:\\Users\\rbmwe\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+    "C:\\Users\\pedro\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

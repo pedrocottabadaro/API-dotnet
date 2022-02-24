@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Users.Command
 {
-    public record UpdateUserCommand (int Id,String UserName, String Password,String email) : IRequest<string>;
+    public record UpdateUserCommand(int Id, String UserName, String Password, String email) : IRequest<string>;
 
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, String>
     {
@@ -28,7 +28,7 @@ namespace DDDBasico.Application.Users.Command
             try
             {
                 var user = _repository.GetById(request.Id);
-                if(user==null) return await Task.FromResult("User not found");
+                if (user == null) return await Task.FromResult("User not found");
 
                 user.email = request.email;
 

@@ -1637,19 +1637,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rbmwe\\.nuget\\packages\\": {}
+    "C:\\Users\\pedro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Infrastructure\\DDDBasico.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Infrastructure\\DDDBasico.Infrastructure.csproj",
       "projectName": "DDDBasico.Infrastructure",
-      "projectPath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Infrastructure\\DDDBasico.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\rbmwe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Infrastructure\\DDDBasico.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rbmwe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1663,8 +1663,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj": {
-              "projectPath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj"
+            "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj": {
+              "projectPath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj"
             }
           }
         }

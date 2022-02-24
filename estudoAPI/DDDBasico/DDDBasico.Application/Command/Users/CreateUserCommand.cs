@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Users.Command
 {
-    public record CreateUserCommand (String UserName, String Password,String email) : IRequest<string>;
+    public record CreateUserCommand(String UserName, String Password, String email) : IRequest<string>;
 
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, String>
     {

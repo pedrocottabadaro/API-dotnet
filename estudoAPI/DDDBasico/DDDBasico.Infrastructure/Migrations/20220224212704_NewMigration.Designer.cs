@@ -8,16 +8,36 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DDDBasico.Infrastructure.Migrations
+namespace DDDBasico.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220218041324_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20220224212704_NewMigration")]
+    partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
+
+            modelBuilder.Entity("DDDBasico.Domain.Entities.Log", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Iduser")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("drink_amount")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Log");
+                });
 
             modelBuilder.Entity("DDDBasico.Domain.Entities.User", b =>
                 {
@@ -31,7 +51,7 @@ namespace DDDBasico.Infrastructure.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("BLOB");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("UserName")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("drink_counter")

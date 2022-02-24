@@ -17,6 +17,7 @@ public static class DepencyInjection
         ConfigureDB(services, config);
         ConfigureToken(services, config);
         services.AddTransient<IRepositoryUser, RepositoryUser>();
+        services.AddTransient<IRepositoryLog, RepositoryLog>();
         services.AddMediatR(AppDomain.CurrentDomain.Load("DDDBasico.Application"));
 
     }
@@ -24,7 +25,7 @@ public static class DepencyInjection
     public static void ConfigureDB(this IServiceCollection services, IConfiguration config)
     {
 
-        services.AddDbContext<ApplicationDbContext>(options =>{options.UseSqlite(config.GetConnectionString("DefaultConnection"));});
+        services.AddDbContext<ApplicationDbContext>(options =>{options.UseSqlite(config.GetConnectionString("DefaultConnection"),b=>b.MigrationsAssembly("DDDBasico.Infrastructure"));});
 
     }
 

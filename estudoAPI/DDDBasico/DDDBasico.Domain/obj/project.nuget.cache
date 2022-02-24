@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9sQeo/vId/e0kQI026Rd+YF4npQhCVuGP0fcFlIVtQLuE2vYIHvdn4v+09tg8kog+R/cfQ5dZ46Kx2f8ZJHJMQ==",
+  "dgSpecHash": "us2VE9lQnIyEMwvIMsNjrgLFtf0lBIblm10FSM9xdFEref0QfpAV5QyhLdFCSvmYEw905YSwp0kuxRwihtp3mw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rbmwe\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
