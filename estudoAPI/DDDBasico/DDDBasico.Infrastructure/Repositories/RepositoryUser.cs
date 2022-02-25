@@ -18,11 +18,11 @@ namespace DDDBasico.Infrastructure.Repositories
             _context = context;
         }
 
-        public bool checkUserExists(String username)
+        public User checkUserExists(String email)
         {
             try
             {
-                return _context.Users.Any(stored_users => stored_users.UserName == username.ToLower());
+                return _context.Users.FirstOrDefault(stored_users => stored_users.email == email);
             }
             catch (Exception)
             {

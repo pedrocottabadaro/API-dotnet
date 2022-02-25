@@ -27,7 +27,7 @@ namespace DDDBasico.Application.Users.Command
         {
             try
             {
-                if (_repository.checkUserExists(request.UserName)) return await Task.FromResult("Username is Taken");
+                if (_repository.checkUserExists(request.email) != null) return await Task.FromResult("User already exists");
                 using var hmac = new HMACSHA512();
                 var user = new User
                 {

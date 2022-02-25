@@ -1,6 +1,7 @@
 ﻿using DDDBasico.Application.DTO;
 using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
+using DDDBasico.Domain.Interfaces.Services;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -18,19 +19,21 @@ namespace DDDBasico.Application.Users.Command
 
         private readonly IRepositoryUser _repository;
         private readonly IRepositoryLog _log;
+        private readonly ITokenService _tokenService;
 
 
-
-        public DrinkUserCommandHandler(IRepositoryUser repository, IRepositoryLog log)
+        public DrinkUserCommandHandler(IRepositoryUser repository, IRepositoryLog log, ITokenService tokenService)
         {
             _repository = repository;
             _log = log;
+            _tokenService = tokenService;
         }
 
         public async Task<UserDTO> Handle(DrinkUserCommand request, CancellationToken cancellationToken)
         {
             try
             {
+               /* if (_tokenService.ReturnIdToken("!") != request.Id.ToString()) return null;*/
                 var user = _repository.GetById(request.Id);
                 if (user == null) return null;
 

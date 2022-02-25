@@ -1,5 +1,6 @@
 ﻿using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
+using DDDBasico.Domain.Interfaces.Services;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -16,17 +17,20 @@ namespace DDDBasico.Application.Users.Command
     {
 
         private readonly IRepositoryUser _repository;
+        private readonly ITokenService _tokenService;
 
-
-        public DeleteUserCommandHandler(IRepositoryUser repository)
+        public DeleteUserCommandHandler(IRepositoryUser repository, ITokenService tokenService)
         {
             _repository = repository;
+            _tokenService = tokenService;
         }
+
 
         public async Task<String> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             try
             {
+               /* if(_tokenService.ReturnIdToken("!") != request.Id.ToString()) return await Task.FromResult("User deleted");*/
                 var user = _repository.GetById(request.Id);
                 if (user == null) return await Task.FromResult("User not found");
                 _repository.Remove(user);

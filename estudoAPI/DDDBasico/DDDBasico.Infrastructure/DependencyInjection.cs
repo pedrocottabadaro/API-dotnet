@@ -1,6 +1,8 @@
 ﻿using DDDBasico.Domain.Interfaces;
+using DDDBasico.Domain.Interfaces.Services;
 using DDDBasico.Infrastructure.Context;
 using DDDBasico.Infrastructure.Repositories;
+using DDDBasico.Infrastructure.Services.JWT;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +18,10 @@ public static class DepencyInjection
 
         ConfigureDB(services, config);
         ConfigureToken(services, config);
-        services.AddTransient<IRepositoryUser, RepositoryUser>();
         services.AddTransient<IRepositoryLog, RepositoryLog>();
+        services.AddTransient<IRepositoryUser, RepositoryUser>();
+        services.AddScoped<ITokenService, TokenService>();
+
         services.AddMediatR(AppDomain.CurrentDomain.Load("DDDBasico.Application"));
 
     }
