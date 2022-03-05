@@ -42,20 +42,30 @@ namespace DDDBasico.API.Controllers
             return BadRequest(response);
         }
 
-        [HttpPost]
+        [HttpGet("{id}/log")]
         [Authorize]
+        public async Task<IActionResult> GetDrinkingLog(int id)
+        {
+            var query = new GetUserLogQuery(id);
+            var request = query with { Id = id };
+            var response = await _mediator.Send(request);
+            if (response != null) return Ok(response);
+            return BadRequest(response);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateUserCommand command)
         {
             var response = await _mediator.Send(command);
-            if (response == "User updated") return Ok(response);
-            if (response == "Username is Taken") return BadRequest(response);
+            if (response == "User created") return Ok(response);
+            if (response == "User already exists") return BadRequest(response);
             return StatusCode(500, response);
 
         }
  
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> Put(int id, [FromBody] UpdateUserCommand command)
+        public async Task<IActionResult> Put([FromRoute]int id, [FromBody] UpdateUserCommand command)
         {
             var request = command with { Id = id};
             var response = await _mediator.Send(request);
@@ -86,6 +96,19 @@ namespace DDDBasico.API.Controllers
             return BadRequest("Something went wrong");
 
         }
+
+
+
+       /* [HttpGet("/ranking")]
+        public async Task<IActionResult> Ranking()
+        {
+            var query = new GetRankingQuery();
+            var response = await _mediator.Send(query);
+            if (response != null) return Ok(response);
+            return BadRequest("Something went wrong");
+
+        }*/
+
 
 
     }

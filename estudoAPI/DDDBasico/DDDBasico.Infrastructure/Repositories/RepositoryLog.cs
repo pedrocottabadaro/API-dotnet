@@ -18,6 +18,15 @@ namespace DDDBasico.Infrastructure.Repositories
             _context = context;
         }
 
+        public User GetRanking()
+        {
+            
 
+        }
+
+        public List<Log> GetUserLog(int IdUser)
+        {
+            return _context.Log.Where(log => log.Iduser == IdUser).ToList();
+        }
     }
 }

@@ -3,6 +3,7 @@ using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
 using DDDBasico.Domain.Interfaces.Services;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,24 @@ namespace DDDBasico.Application.Users.Command
         private readonly IRepositoryUser _repository;
         private readonly IRepositoryLog _log;
         private readonly ITokenService _tokenService;
+        private readonly IHttpContextAccessor _httpContextAcessor;
 
 
-        public DrinkUserCommandHandler(IRepositoryUser repository, IRepositoryLog log, ITokenService tokenService)
+
+        public DrinkUserCommandHandler(IRepositoryUser repository, IRepositoryLog log, ITokenService tokenService, IHttpContextAccessor httpContextAcessor)
         {
             _repository = repository;
             _log = log;
             _tokenService = tokenService;
-        }
+            _httpContextAcessor = httpContextAcessor;
+    }
 
         public async Task<UserDTO> Handle(DrinkUserCommand request, CancellationToken cancellationToken)
         {
             try
             {
-               /* if (_tokenService.ReturnIdToken("!") != request.Id.ToString()) return null;*/
+                var token = _httpContextAcessor.HttpContext.Request.Headers["Authorization"].ToString().Split("Bearer");
+                if (_tokenService.ReturnIdToken(token[1].TrimStart()) != request.Id.ToString()) return null;
                 var user = _repository.GetById(request.Id);
                 if (user == null) return null;
 
@@ -62,7 +67,6 @@ namespace DDDBasico.Application.Users.Command
             }
             catch (System.Exception)
             {
-                /*  return await Task.FromResult("Erro");*/
                 return null;
             }
 

@@ -5,6 +5,7 @@ using DDDBasico.Infrastructure.Repositories;
 using DDDBasico.Infrastructure.Services.JWT;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,7 @@ public static class DepencyInjection
         ConfigureToken(services, config);
         services.AddTransient<IRepositoryLog, RepositoryLog>();
         services.AddTransient<IRepositoryUser, RepositoryUser>();
+        services.AddHttpContextAccessor();
         services.AddScoped<ITokenService, TokenService>();
 
         services.AddMediatR(AppDomain.CurrentDomain.Load("DDDBasico.Application"));
