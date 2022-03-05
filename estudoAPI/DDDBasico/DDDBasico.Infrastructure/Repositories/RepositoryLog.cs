@@ -18,10 +18,23 @@ namespace DDDBasico.Infrastructure.Repositories
             _context = context;
         }
 
-        public User GetRanking()
+        public Object GetRanking()
         {
-            
+       
 
+            var currentDateTimeStart = DateTime.Now.ToString("yyyy/MM/dd 00:00:00");
+            var currentDateTimeEnd = DateTime.Now.ToString("yyyy/MM/dd 23:59:59");
+            var result= from u in _context.Users
+                        join l in _context.Log on u.Id equals l.Iduser
+                        where l.Data>=DateTime.Parse(currentDateTimeStart) && l.Data <= DateTime.Parse(currentDateTimeEnd)
+                        group l by new{ l.Iduser,u.UserName}  into g
+                        select new
+                        {
+                            username = g.Key.UserName,
+                            drink_counter = g.Sum(log => log.drink_amount)
+                        };
+
+            return result;
         }
 
         public List<Log> GetUserLog(int IdUser)

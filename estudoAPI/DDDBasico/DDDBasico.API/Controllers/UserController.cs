@@ -31,6 +31,18 @@ namespace DDDBasico.API.Controllers
             return Ok(response);
         }
 
+
+        [Route("ranking")]
+        [HttpGet]
+        public async Task<IActionResult> Ranking()
+        {
+            var query = new GetRankingUsersQuery();
+            var response = await _mediator.Send(query);
+            if (response != null) return Ok(response);
+            return BadRequest("Something went wrong");
+
+        }
+
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> Get(int id)
@@ -97,17 +109,6 @@ namespace DDDBasico.API.Controllers
 
         }
 
-
-
-       /* [HttpGet("/ranking")]
-        public async Task<IActionResult> Ranking()
-        {
-            var query = new GetRankingQuery();
-            var response = await _mediator.Send(query);
-            if (response != null) return Ok(response);
-            return BadRequest("Something went wrong");
-
-        }*/
 
 
 

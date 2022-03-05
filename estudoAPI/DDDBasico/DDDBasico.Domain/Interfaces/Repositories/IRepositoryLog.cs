@@ -9,6 +9,6 @@ namespace DDDBasico.Domain.Interfaces
     public interface IRepositoryLog : IRepositoryBase<Log>
     {
         List<Log> GetUserLog(int IdUser);
-        User GetRanking();
+        Object GetRanking();
     }
 }
