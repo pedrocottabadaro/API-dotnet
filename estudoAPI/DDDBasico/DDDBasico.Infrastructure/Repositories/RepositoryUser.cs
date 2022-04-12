@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DDDBasico.Infrastructure.Repositories
 {
-    public class RepositoryUser : RepositoryBase<User>, IRepositoryUser 
+    public class RepositoryUser : RepositoryBase<User>, IRepositoryUser
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,17 +19,11 @@ namespace DDDBasico.Infrastructure.Repositories
             _context = context;
         }
 
-        public User checkUserExists(String email)
+        public async Task<User> GetUserByEmail(String email)
         {
-            try
-            {
-                return _context.Users.FirstOrDefault(stored_users => stored_users.email == email);
-            }
-            catch (Exception)
-            {
 
-                throw;
-            }
+            return await _context.Users.FirstOrDefaultAsync(stored_users => stored_users.email == email);
+
         }
     }
 }

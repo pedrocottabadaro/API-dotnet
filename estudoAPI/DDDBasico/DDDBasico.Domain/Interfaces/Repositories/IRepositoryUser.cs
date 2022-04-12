@@ -8,7 +8,7 @@ namespace DDDBasico.Domain.Interfaces
 {
     public interface IRepositoryUser : IRepositoryBase<User>
     {
-        User checkUserExists(string email);
+        Task<User> GetUserByEmail(string email);
 
     }
 }

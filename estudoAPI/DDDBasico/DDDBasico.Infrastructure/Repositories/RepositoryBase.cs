@@ -37,15 +37,15 @@ namespace DDDBasico.Infrastructure.Repositories
             _context.SaveChangesAsync();
         }
     
-        public IEnumerable<TEntity> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAll()
         {
-           return _context.Set<TEntity>().ToList();
+           return await _context.Set<TEntity>().ToListAsync();
            
         }
 
-        public TEntity GetById(int id)
+        public async Task<TEntity> GetById(int id)
         {       
-           return _context.Set<TEntity>().Find(id);       
+           return await _context.Set<TEntity>().FindAsync(id);       
           
         }
 

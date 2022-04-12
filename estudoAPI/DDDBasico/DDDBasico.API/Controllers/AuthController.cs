@@ -20,9 +20,8 @@ namespace DDDBasico.API.Controllers
         public async Task<IActionResult> Post(LoginAuthCommand command)
         {
             var response = await _mediator.Send(command);
-            if (response != null) return Ok(response);
-            if (response == null) return BadRequest("Invalid credentials");
-            return StatusCode(500, response);
+            if (response.Errors.Count() != 0) return UnprocessableEntity();
+            return Ok(response.Data);
 
         }
     }

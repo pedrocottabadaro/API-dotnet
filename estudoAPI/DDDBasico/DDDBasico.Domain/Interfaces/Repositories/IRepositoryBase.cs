@@ -9,9 +9,9 @@ namespace DDDBasico.Domain.Interfaces
     {
         void Add(TEntity obj);
 
-        TEntity GetById(int id);
+        Task<TEntity> GetById(int id);
 
-        IEnumerable<TEntity> GetAll();
+        Task<IEnumerable<TEntity>> GetAll();
 
         void Update(TEntity obj);
 

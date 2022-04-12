@@ -1,4 +1,5 @@
 ﻿using DDDBasico.Application.DTO;
+using DDDBasico.Application.Extras;
 using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
 using MediatR;
@@ -10,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Queries.Users
 {
-    public record GetRankingUsersQuery() : IRequest<Object>;
+    public record GetRankingUsersQuery() : IRequest<Response>;
 
-    public class GetRankingUsersQueryHandler : IRequestHandler<GetRankingUsersQuery, Object>
+    public class GetRankingUsersQueryHandler : IRequestHandler<GetRankingUsersQuery, Response>
     {
 
         private readonly IRepositoryLog _repositoryLog;
@@ -22,10 +23,10 @@ namespace DDDBasico.Application.Queries.Users
             _repositoryLog = repositoryLog;
         }
 
-        public async Task <Object> Handle(GetRankingUsersQuery request, CancellationToken cancellationToken)
+        public async Task <Response> Handle(GetRankingUsersQuery request, CancellationToken cancellationToken)
         {
             var topRankedUser = _repositoryLog.GetRanking();
-            return await Task.FromResult(topRankedUser);
+            return new Response(topRankedUser);
 
         }
 

@@ -1,8 +1,11 @@
-﻿using DDDBasico.Domain.Interfaces;
+﻿using DDDBasico.Application.Users.Command;
+using DDDBasico.Domain.Interfaces;
 using DDDBasico.Domain.Interfaces.Services;
 using DDDBasico.Infrastructure.Context;
 using DDDBasico.Infrastructure.Repositories;
 using DDDBasico.Infrastructure.Services.JWT;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
@@ -23,8 +26,10 @@ public static class DepencyInjection
         services.AddTransient<IRepositoryUser, RepositoryUser>();
         services.AddHttpContextAccessor();
         services.AddScoped<ITokenService, TokenService>();
+        var assembly = AppDomain.CurrentDomain.Load("DDDBasico.Application");
+        services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(assembly));
+        services.AddMediatR(assembly);
 
-        services.AddMediatR(AppDomain.CurrentDomain.Load("DDDBasico.Application"));
 
     }
 
@@ -49,6 +54,8 @@ public static class DepencyInjection
                 ValidateAudience = false,
             };
         });
+
+        services.AddAuthorization();
     }
 
 }

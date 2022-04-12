@@ -1,7 +1,9 @@
 ﻿using DDDBasico.Application.DTO;
+using DDDBasico.Application.Extras;
 using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
 using DDDBasico.Domain.Interfaces.Services;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,9 +14,9 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Command.Auth
 {
-    public record LoginAuthCommand(String Password, String email) : IRequest<JwtDTO>;
+    public record LoginAuthCommand(String Password, String email) : IRequest<Response>;
 
-    public class LoginAuthCommandHandler : IRequestHandler<LoginAuthCommand, JwtDTO>
+    public class LoginAuthCommandHandler : IRequestHandler<LoginAuthCommand, Response>
     {
 
         private readonly IRepositoryUser _repository;
@@ -23,39 +25,53 @@ namespace DDDBasico.Application.Command.Auth
         public LoginAuthCommandHandler(IRepositoryUser repository, ITokenService tokenService)
         {
             _repository = repository;
-            _tokenService= tokenService;
+            _tokenService = tokenService;
         }
 
-        public async Task<JwtDTO> Handle(LoginAuthCommand request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(LoginAuthCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                var existingUser = _repository.checkUserExists(request.email);
-                if (existingUser == null) return null;
-                using var hmac = new HMACSHA512(existingUser.PasswordSalt);
-                var hashLogin = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password));
 
-                for (int i = 0; i < hashLogin.Length; i++)
+            Response r = new Response();
+            var existingUser = _repository.GetUserByEmail(request.email).Result;
+
+            using var hmac = new HMACSHA512(existingUser.PasswordSalt);
+            var hashLogin = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password));
+
+            for (int i = 0; i < hashLogin.Length; i++)
+            {
+                if (hashLogin[i] != existingUser.PasswordHash[i])
                 {
-                    if (hashLogin[i] != existingUser.PasswordHash[i]) return null;
+                    r.AddError("Passoword", "Incorret Password");
+                    return r;
                 }
-
-                var jwt= new JwtDTO
-                {
-                    Id=existingUser.Id,
-                    UserName = existingUser.UserName,
-                    email = request.email,
-                    drink_counter = existingUser.drink_counter,
-                    Token = _tokenService.CreateToken(existingUser)
-                };
-
-                return await Task.FromResult(jwt);
-
             }
-            catch (System.Exception)
+
+            var jwt = new JwtDTO
             {
-                return null;
+                Id = existingUser.Id,
+                UserName = existingUser.UserName,
+                email = request.email,
+                drink_counter = existingUser.drink_counter,
+                Token = _tokenService.CreateToken(existingUser)
+            };
+            return new Response(jwt);
+
+
+        }
+
+        public class LoginAuthCommandValidator : AbstractValidator<LoginAuthCommand>
+        {
+            private readonly IRepositoryUser repository;
+
+            public LoginAuthCommandValidator(IRepositoryUser repository)
+            {
+
+                RuleFor(newUser => newUser).MustAsync(async (newUser, _) => repository.GetUserByEmail(newUser.email).Result!=null).WithMessage("User not found");
+
             }
+       
+
+        
         }
     }
 

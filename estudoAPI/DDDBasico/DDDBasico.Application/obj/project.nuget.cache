@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "8HtPM0DNnrzeAgCqBSkHJQj1DAlTcD3UVyr8IvGoW8RztjZWyF3Mjn3/27xvrsUQykAgsv9XmgTmuG0lh1zvLw==",
+  "dgSpecHash": "cLEX9Gy5Prsr6KmnNBHMYYTzqagXBWXz38SSoO4twHRm3324kk0neYkPhXhyRkOqB+0QAmzR4NlFQzOzndxf3g==",
   "success": true,
   "projectFilePath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pedro\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.6\\fluentvalidation.dependencyinjectionextensions.10.3.6.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",

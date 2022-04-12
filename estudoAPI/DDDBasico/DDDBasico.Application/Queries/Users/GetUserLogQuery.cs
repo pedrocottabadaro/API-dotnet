@@ -1,7 +1,9 @@
 ﻿using DDDBasico.Application.DTO;
+using DDDBasico.Application.Extras;
 using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
 using DDDBasico.Domain.Interfaces.Services;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -12,9 +14,9 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Queries.Users
 {
-    public record GetUserLogQuery(int Id) : IRequest<IEnumerable<LogDTO>>;
+    public record GetUserLogQuery(int Id) : IRequest<Response>;
 
-    public class GetUserLogQueryHandler : IRequestHandler<GetUserLogQuery, IEnumerable<LogDTO>>
+    public class GetUserLogQueryHandler : IRequestHandler<GetUserLogQuery, Response>
     {
 
         private readonly IRepositoryLog _repositoryLog;
@@ -30,7 +32,7 @@ namespace DDDBasico.Application.Queries.Users
         }
 
 
-        public async Task<IEnumerable<LogDTO>> Handle(GetUserLogQuery request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(GetUserLogQuery request, CancellationToken cancellationToken)
         {
             var token = _httpContextAcessor.HttpContext.Request.Headers["Authorization"].ToString().Split("Bearer");
             if (_tokenService.ReturnIdToken(token[1].TrimStart()) != request.Id.ToString()) return null;
@@ -42,7 +44,19 @@ namespace DDDBasico.Application.Queries.Users
                 Data = log.Data,
                 drink_counter = log.drink_amount
             });
-            return await Task.FromResult(logs);
+            return new Response(logs);
+        }
+
+        public class GetUserLogQueryValidator : AbstractValidator<GetUserLogQuery>
+        {
+
+            private readonly IRepositoryUser repository;
+
+            public GetUserLogQueryValidator(IRepositoryUser repository)
+            {
+                RuleFor(newUser => newUser).MustAsync(async (newUser, _) => repository.GetById(newUser.Id).Result == null).WithMessage("User not found");
+
+            }
         }
     }
 }

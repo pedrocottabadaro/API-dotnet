@@ -1,6 +1,8 @@
-﻿using DDDBasico.Domain.Entities;
+﻿using DDDBasico.Application.Extras;
+using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
 using DDDBasico.Domain.Interfaces.Services;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -12,9 +14,9 @@ using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Users.Command
 {
-    public record DeleteUserCommand(int Id) : IRequest<string>;
+    public record DeleteUserCommand(int Id) : IRequest<Response>;
 
-    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, String>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Response>
     {
 
         private readonly IRepositoryUser _repository;
@@ -30,24 +32,35 @@ namespace DDDBasico.Application.Users.Command
         }
 
 
-        public async Task<String> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                var token = _httpContextAcessor.HttpContext.Request.Headers["Authorization"].ToString().Split("Bearer");
-                if (_tokenService.ReturnIdToken(token[1].TrimStart()) != request.Id.ToString()) return "Not authorized";
-                var user = _repository.GetById(request.Id);
-                if (user == null) return await Task.FromResult("User not found");
-                _repository.Remove(user);
 
-                return await Task.FromResult("User deleted");
-
-            }
-            catch (System.Exception)
+            Response r = new Response();
+            var token = _httpContextAcessor.HttpContext.Request.Headers["Authorization"].ToString().Split("Bearer");
+            if (_tokenService.ReturnIdToken(token[1].TrimStart()) != request.Id.ToString())
             {
-                return await Task.FromResult("Internal error");
+                r.AddError("Token", "Not authorized");
+                return r;
             }
 
+            var user = _repository.GetById(request.Id).Result;
+          
+            _repository.Remove(user);
+            return r;
+
+        }
+
+        public class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
+        {
+
+            private readonly IRepositoryUser repository;
+
+            public DeleteUserCommandValidator(IRepositoryUser repository)
+            {
+
+                RuleFor(newUser => newUser).MustAsync(async (newUser, _) => repository.GetById(newUser.Id).Result == null).WithMessage("User not found");
+
+            }
         }
     }
 }

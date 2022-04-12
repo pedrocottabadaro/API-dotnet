@@ -138,3 +138,6 @@ C:\Users\rbmwe\Desktop\API-dotnet\estudoAPI\DDDBasico\DDDBasico.API\obj\Debug\ne
 C:\Users\rbmwe\Desktop\API-dotnet\estudoAPI\DDDBasico\DDDBasico.API\obj\Debug\net6.0\DDDBasico.API.pdb
 C:\Users\rbmwe\Desktop\API-dotnet\estudoAPI\DDDBasico\DDDBasico.API\obj\Debug\net6.0\DDDBasico.API.genruntimeconfig.cache
 C:\Users\rbmwe\Desktop\API-dotnet\estudoAPI\DDDBasico\DDDBasico.API\obj\Debug\net6.0\ref\DDDBasico.API.dll
+C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.API\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\pedro\Desktop\estudoc#\estudoAPI\DDDBasico\DDDBasico.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
