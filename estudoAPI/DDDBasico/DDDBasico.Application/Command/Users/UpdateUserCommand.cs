@@ -1,16 +1,8 @@
-﻿using DDDBasico.Application.Extras;
-using DDDBasico.Domain.Entities;
+﻿using DDDBasico.Application.DTO;
+using DDDBasico.Application.Extras;
 using DDDBasico.Domain.Interfaces;
-using DDDBasico.Domain.Interfaces.Services;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Users.Command
 {
@@ -20,34 +12,31 @@ namespace DDDBasico.Application.Users.Command
     {
 
         private readonly IRepositoryUser _repository;
-        private readonly ITokenService _tokenService;
-        private readonly IHttpContextAccessor _httpContextAcessor;
 
-
-        public UpdateUserCommandHandler(IRepositoryUser repository, ITokenService tokenService, IHttpContextAccessor httpContextAcessor)
+        public UpdateUserCommandHandler(IRepositoryUser repository)
         {
             _repository = repository;
-            _tokenService = tokenService;
-            _httpContextAcessor = httpContextAcessor;
         }
 
         public async Task<Response> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-
-            var token = _httpContextAcessor.HttpContext.Request.Headers["Authorization"].ToString().Split("Bearer");
-            if (_tokenService.ReturnIdToken(token[1].TrimStart()) != request.Id.ToString()) return null;
             var user = _repository.GetById(request.Id).Result;
             user.email = request.email;
             _repository.Update(user);
-            return new Response();
 
+            return new Response(
+            new UserDTO
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                email = user.email,
+                drink_counter = user.drink_counter
+            });
         }
     }
 
     public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
     {
-        private readonly IRepositoryUser repository;
-
         public UpdateUserCommandValidator(IRepositoryUser repository)
         {
             RuleFor(updatedUser => updatedUser.UserName).NotEmpty().MaximumLength(100);

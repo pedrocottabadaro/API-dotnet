@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TI77Ive0OiJNaiddl46Mwa/KivSSXyupddXjn5DicEoSqaI44QcXIbLttaNcYB1+h6p3OqcZql6NPpTcNJWdvg==",
+  "dgSpecHash": "MA3TNGa194bmQ8utJoVz0bFk/v1m89HVchsAGsyFUlD+JFhufLHklLfMI35mm1ajCIrWTG1PuT32owLCVHqu0g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro\\Desktop\\estudoc#\\estudoAPI\\DDDBasico\\DDDBasico.Infrastructure\\DDDBasico.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\Desktop\\API-dotnet-main\\estudoAPI\\DDDBasico\\DDDBasico.Infrastructure\\DDDBasico.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",

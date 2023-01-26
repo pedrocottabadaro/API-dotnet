@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DDDBasico.Application.Middleware;
 using DDDBasico.Application.Queries.Users;
 using DDDBasico.Application.Users.Command;
 using MediatR;
@@ -16,7 +13,6 @@ namespace DDDBasico.API.Controllers
     {
 
         private readonly IMediator _mediator;
-
         public UserController(IMediator mediator)
         {
             _mediator = mediator;
@@ -45,6 +41,7 @@ namespace DDDBasico.API.Controllers
 
         [HttpGet("{id}")]
         [Authorize]
+        [AuthorizeByUserId]
         public async Task<IActionResult> Get([FromRoute] int id)
         {
             var query = new GetUserQuery(id);
@@ -56,6 +53,8 @@ namespace DDDBasico.API.Controllers
 
         [HttpGet("{id}/log")]
         [Authorize]
+        [AuthorizeByUserId]
+
         public async Task<IActionResult> GetDrinkingLog([FromRoute] int id)
         {
             var query = new GetUserLogQuery(id);
@@ -76,6 +75,8 @@ namespace DDDBasico.API.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
+        [AuthorizeByUserId]
+
         public async Task<IActionResult> Put([FromRoute] int id, [FromBody] UpdateUserCommand command)
         {
             var request = command with { Id = id };
@@ -86,6 +87,8 @@ namespace DDDBasico.API.Controllers
 
         [HttpDelete("{id}")]
         [Authorize]
+        [AuthorizeByUserId]
+
         public async Task<IActionResult> Delete([FromRoute] int id,DeleteUserCommand command)
         {
             var request = command with { Id = id };
@@ -97,6 +100,8 @@ namespace DDDBasico.API.Controllers
      
         [HttpPost("{id}/drink")]
         [Authorize]
+        [AuthorizeByUserId]
+
         public async Task<IActionResult> Drink([FromRoute] int id,[FromBody]DrinkUserCommand command)
         {
             var request = command with { Id = id };

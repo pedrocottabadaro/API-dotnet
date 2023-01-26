@@ -1,6 +1,5 @@
 ﻿using DDDBasico.Application.Command.Auth;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DDDBasico.API.Controllers

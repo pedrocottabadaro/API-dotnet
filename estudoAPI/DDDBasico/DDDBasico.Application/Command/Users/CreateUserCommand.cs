@@ -1,4 +1,5 @@
-﻿using DDDBasico.Application.Extras;
+﻿using DDDBasico.Application.DTO;
+using DDDBasico.Application.Extras;
 using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
 using FluentValidation;
@@ -35,10 +36,9 @@ namespace DDDBasico.Application.Users.Command
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
                 PasswordSalt = hmac.Key
             };
-
             _repository.Add(user);
-       
-            return new Response(user);
+
+            return new Response(new UserDTO {Id=user.Id,UserName=user.UserName,email=user.email,drink_counter=user.drink_counter });
 
         }
     }
@@ -46,18 +46,16 @@ namespace DDDBasico.Application.Users.Command
     public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
     {
 
-        private readonly IRepositoryUser repository;
-
         public CreateUserCommandValidator(IRepositoryUser repository)
         {
             RuleFor(newUser => newUser.UserName).NotEmpty().MaximumLength(100);
             RuleFor(newUser => newUser.email).NotEmpty().MaximumLength(100).EmailAddress();
             RuleFor(newUser => newUser.Password).NotEmpty().MaximumLength(12).MinimumLength(4);
-            RuleFor(newUser => newUser).MustAsync(async (newUser, _) => repository.GetUserByEmail(newUser.email).Result != null).WithMessage("Username taken");
+            RuleFor(newUser => newUser).MustAsync(async (newUser, _) => repository.GetUserByEmail(newUser.email) != null).WithMessage("Email taken");
 
         }
   
-        }
+    }
 
 
 }

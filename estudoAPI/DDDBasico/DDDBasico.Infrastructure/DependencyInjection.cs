@@ -1,4 +1,5 @@
-﻿using DDDBasico.Application.Users.Command;
+﻿using DDDBasico.Application.Middleware;
+using DDDBasico.Application.Users.Command;
 using DDDBasico.Domain.Interfaces;
 using DDDBasico.Domain.Interfaces.Services;
 using DDDBasico.Infrastructure.Context;
@@ -20,12 +21,14 @@ public static class DepencyInjection
     public static void ConfigureStartup(this IServiceCollection services, IConfiguration config)
     {
 
+        services.AddControllers();
         ConfigureDB(services, config);
         ConfigureToken(services, config);
         services.AddTransient<IRepositoryLog, RepositoryLog>();
         services.AddTransient<IRepositoryUser, RepositoryUser>();
         services.AddHttpContextAccessor();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<AuthorizeByUserIdAttribute>();
         var assembly = AppDomain.CurrentDomain.Load("DDDBasico.Application");
         services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(assembly));
         services.AddMediatR(assembly);

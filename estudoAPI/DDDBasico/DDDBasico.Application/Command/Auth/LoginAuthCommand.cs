@@ -1,16 +1,11 @@
 ﻿using DDDBasico.Application.DTO;
 using DDDBasico.Application.Extras;
-using DDDBasico.Domain.Entities;
 using DDDBasico.Domain.Interfaces;
 using DDDBasico.Domain.Interfaces.Services;
 using FluentValidation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Command.Auth
 {
@@ -41,7 +36,7 @@ namespace DDDBasico.Application.Command.Auth
             {
                 if (hashLogin[i] != existingUser.PasswordHash[i])
                 {
-                    r.AddError("Passoword", "Incorret Password");
+                    r.AddError("Passoword", "Incorrect Password");
                     return r;
                 }
             }
@@ -61,16 +56,12 @@ namespace DDDBasico.Application.Command.Auth
 
         public class LoginAuthCommandValidator : AbstractValidator<LoginAuthCommand>
         {
-            private readonly IRepositoryUser repository;
-
             public LoginAuthCommandValidator(IRepositoryUser repository)
             {
 
                 RuleFor(newUser => newUser).MustAsync(async (newUser, _) => repository.GetUserByEmail(newUser.email).Result!=null).WithMessage("User not found");
 
             }
-       
-
         
         }
     }

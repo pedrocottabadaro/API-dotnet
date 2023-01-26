@@ -1,13 +1,6 @@
-﻿using DDDBasico.Application.DTO;
-using DDDBasico.Application.Extras;
-using DDDBasico.Domain.Entities;
+﻿using DDDBasico.Application.Extras;
 using DDDBasico.Domain.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DDDBasico.Application.Queries.Users
 {
@@ -26,6 +19,7 @@ namespace DDDBasico.Application.Queries.Users
         public async Task <Response> Handle(GetRankingUsersQuery request, CancellationToken cancellationToken)
         {
             var topRankedUser = _repositoryLog.GetRanking();
+
             return new Response(topRankedUser);
 
         }

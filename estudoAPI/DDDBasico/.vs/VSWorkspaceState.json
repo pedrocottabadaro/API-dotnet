@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DDDBasico.Application",
-    "\\DDDBasico.Application\\Users\\Command",
-    "\\DDDBasico.Application\\Users\\Queries"
+    "\\DDDBasico.Application"
   ],
   "SelectedNode": "\\DDDBasico.sln",
   "PreviewInSolutionExplorer": false

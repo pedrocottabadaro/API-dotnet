@@ -22,7 +22,8 @@ namespace DDDBasico.Infrastructure.Repositories
         public async Task<User> GetUserByEmail(String email)
         {
 
-            return await _context.Users.FirstOrDefaultAsync(stored_users => stored_users.email == email);
+            var result= await _context.Users.FirstOrDefaultAsync(stored_users => stored_users.email == email);
+            return result;
 
         }
     }
