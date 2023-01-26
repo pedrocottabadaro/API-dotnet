@@ -420,11 +420,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pedro\\Desktop\\API-dotnet-main\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
+      "projectUniqueName": "C:\\Users\\pedro\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
       "projectName": "DDDBasico.Application",
-      "projectPath": "C:\\Users\\pedro\\Desktop\\API-dotnet-main\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
+      "projectPath": "C:\\Users\\pedro\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\DDDBasico.Application.csproj",
       "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pedro\\Desktop\\API-dotnet-main\\estudoAPI\\DDDBasico\\DDDBasico.Application\\obj\\",
+      "outputPath": "C:\\Users\\pedro\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -445,8 +445,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\pedro\\Desktop\\API-dotnet-main\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj": {
-              "projectPath": "C:\\Users\\pedro\\Desktop\\API-dotnet-main\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj"
+            "C:\\Users\\pedro\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj": {
+              "projectPath": "C:\\Users\\pedro\\Desktop\\API-dotnet\\estudoAPI\\DDDBasico\\DDDBasico.Domain\\DDDBasico.Domain.csproj"
             }
           }
         }
